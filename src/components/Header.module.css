@@ -1,0 +1,11 @@
+.header {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+}

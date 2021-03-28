@@ -2,17 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import {AppState} from './context/AppState'
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppState>
-      <App />
-    </AppState>
-      
+    <App />
   </React.StrictMode>,
+      
   document.getElementById('root')
 );
 

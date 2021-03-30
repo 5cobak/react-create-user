@@ -1,8 +1,21 @@
 .UserList {
-
+  list-style: none;
+  margin: 0;
+  padding:0;
 }
 
-.item {
-  background-color: green;
+.UserList .item {
   width: 100%;
+  max-width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  animation-name: leftToRightAndFade;
+}
+
+.UserList span {
+  display: block;
+  word-wrap:break-word;
+  margin-bottom: 10px;
 }

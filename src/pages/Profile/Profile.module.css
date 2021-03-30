@@ -1,0 +1,31 @@
+.Profile {
+  flex-grow: 1;
+}
+
+.Profile .user {
+  border: 1px solid #4052B3;
+  border-radius: 4px;
+  max-width: 300px;
+  padding: 20px;
+}
+
+.Profile .user span {
+  display: block;
+  margin-bottom: 20px;
+  word-wrap: break-word;
+}
+
+.Profile form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+.Profile .select {
+  max-width: 150px;
+}
+
+.Profile button {
+  max-width: 150px;
+}

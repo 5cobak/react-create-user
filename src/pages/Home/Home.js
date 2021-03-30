@@ -1,7 +1,7 @@
 import React from 'react'
-import { CreateUser } from '../components/CreateUser/CreateUser'
+import { CreateUser } from '../../components/CreateUser/CreateUser'
 import classes from './Home.module.css'
-import { UsersList } from '../components/UsersList/UsersList'
+import { UsersList } from '../../components/UsersList/UsersList'
 import { Container } from '@material-ui/core'
 
 export const Home = () => {

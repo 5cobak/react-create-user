@@ -1,6 +1,5 @@
 .CreateUser {
   display: flex;
-  /* flex-grow: 1; */
   flex-direction: column;
   margin-bottom: 50px;
 }
@@ -10,4 +9,8 @@
   flex-direction: column;
   width: 100%;
   max-width: 500px;
+}
+
+.CreateUser .error {
+  color: crimson
 }

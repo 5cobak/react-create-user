@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useState } from 'react';
+import {  useDispatch } from 'react-redux'
 import classes from './CreateUser.module.css';
 import { 
   makeStyles, FormControl, InputLabel, Select, 
@@ -7,6 +7,7 @@ import {
   TextField, Button 
 } from '@material-ui/core';
 import { addUser } from '../../store/actions';
+import { validateEmail } from '../../validate/validate'
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -23,31 +24,74 @@ const useStyles = makeStyles((theme) => ({
 
 
 export function CreateUser () {
-  const state = useSelector(state => state);
-  console.log(state);
   
-  
+  const [user, setUser] = useState({
+    id: 0,
+    email: '',
+    fullName: '',
+    gender: ''
+  })
+
   const dispatch = useDispatch();
   
   const materialStyles = useStyles();
 
-  const user = {};
-
   const changeEmailHandler = (e) => {
-    user.email = e.target.value;
+    const valueArr = e.target.value.split(' ');
+
+    const value = valueArr.join('');
+    
+    setUser({
+      ...user,
+      emailTouched: true,
+      email: value
+    })
+
   }
 
   const changeFullNameHandler = e => {
-    user.fullName = e.target.value
+    const value = e.target.value
+
+    setUser({
+      ...user,
+      fullName: value,
+      fullNameTouched: true,
+     })
+
   }
 
   const changeGenderHandler = e => {
-    user.gender = e.target.value
+    const value = e.target.value
     
+    setUser({
+      ...user,
+      gender: value
+    })
+
+  }
+
+  const isValidUser = () => {
+    return validateEmail(user.email) && user.gender && user.fullName 
   }
 
   const buttonClickHandler = () => {
-    dispatch(addUser(user))
+      setUser({
+        ...user,
+        id: user.id++
+      })
+      dispatch(addUser(user));
+      clearFrom()
+  }
+
+  const clearFrom = () => {
+    setUser({
+      ...user,
+      email: '',
+      fullName: '',
+      gender: '',
+      emailTouched: false,
+      fullNameTouched: false
+    })
   }
 
   return (
@@ -61,7 +105,16 @@ export function CreateUser () {
           variant='outlined' 
           margin='normal'
           onChange={changeEmailHandler}
+          required
+          value={user.email}
           />
+          {
+            !validateEmail(user.email) && user.emailTouched
+            ?
+            (<span className={classes.error}>Введите корректный email</span>)
+            :
+            null
+          }
           
           <TextField 
           id='user-full-name-id' 
@@ -69,21 +122,22 @@ export function CreateUser () {
           variant='outlined' 
           margin='normal'
           onChange={changeFullNameHandler}
+          value={user.fullName}
           />
 
           <FormControl className={materialStyles.formControl}>
-            <InputLabel id="user-age-select-label">Пол</InputLabel>
+            <InputLabel id="user-gender-select-label">Пол</InputLabel>
             <Select
-              labelId="user-age-select-label"
-              id="user-age-select"
+              labelId="user-gender-select-label"
+              id="user-gender-select"
               className={materialStyles.Select}
               onChange={changeGenderHandler}
-              defaultValue={''}
+              value={user.gender}
               native={true}
             >
               <option value=''></option>
-              <option value='Male'>Мужской</option>
-              <option value='Female'>Женский</option>
+              <option value='Мужской'>Мужской</option>
+              <option value='Женский'>Женский</option>
             </Select>
           </FormControl>
           
@@ -92,13 +146,12 @@ export function CreateUser () {
             variant="outlined" 
             color="primary" 
             onClick={buttonClickHandler}
+            disabled={!isValidUser()}
           >
             Создать
           </Button>
         </form>
     </div>
-    
-   
   );
 }
 

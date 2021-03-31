@@ -1,5 +1,6 @@
 .Profile {
   flex-grow: 1;
+  padding-top: 30px;
 }
 
 .Profile .user {
@@ -7,6 +8,7 @@
   border-radius: 4px;
   max-width: 300px;
   padding: 20px;
+  margin-bottom: 30px;
 }
 
 .Profile .user span {
@@ -28,4 +30,18 @@
 
 .Profile button {
   max-width: 150px;
+}
+
+.Profile h1 {
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .Profile h1 {
+    font-size: 30px;
+  }
+}
+
+.Profile .error {
+  color: crimson
 }

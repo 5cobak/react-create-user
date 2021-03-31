@@ -67,7 +67,6 @@ export function CreateUser () {
       ...user,
       gender: value
     })
-
   }
 
   const isValidUser = () => {

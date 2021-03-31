@@ -1,6 +1,7 @@
 {
   "name": "untipical-test-app",
   "version": "0.1.0",
+  "homepage": "http://5cobak.github.io/react-create-user",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",
@@ -9,6 +10,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "gh-pages": "^3.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.1.3",
@@ -19,8 +21,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
+  "proxy": "http://localhost:4000",
   "eslintConfig": {
     "extends": "react-app"
   },

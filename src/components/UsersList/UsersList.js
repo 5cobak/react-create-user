@@ -3,7 +3,7 @@ import classes from './UserList.module.css'
 import { useSelector, useDispatch} from 'react-redux'
 import { Select, FormControl, InputLabel } from '@material-ui/core';
 import { filterGender } from '../../store/actions'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export const UsersList = () => {
   const { users, filteredBy } = useSelector(state => state)
@@ -21,7 +21,7 @@ export const UsersList = () => {
         <span>Email: {user.email}</span>
         <span>ФИО: {user.fullName}</span>
         <span>Пол: {user.gender}</span>
-        <NavLink to={`/user/:${user.id}`}>Подробнее о пользователе</NavLink>
+        <Link to={`/user/:${user.id}`}>Подробнее о пользователе</Link>
       </li>
     )
   }

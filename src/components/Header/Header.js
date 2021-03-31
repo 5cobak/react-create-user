@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar'
 import ToolBar from '@material-ui/core/Toolbar'
 import Container from '@material-ui/core/Container';
@@ -10,9 +10,9 @@ export const Header = () => {
       <AppBar className={classes.header} position='static'>
         <Container>
           <ToolBar>
-            <NavLink to={'/'}>
+            <Link to={'/'}>
               Главная
-            </NavLink>
+            </Link>
           </ToolBar>
         </Container>
       </AppBar>
